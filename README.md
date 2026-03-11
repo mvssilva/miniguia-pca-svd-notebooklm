@@ -26,33 +26,30 @@ Para montar este material, utilizei uma base que mistura teoria acadêmica com f
 ### 1. Resumo Estruturado: Pipeline de Redução de Dimensionalidade
 Aqui está o passo a passo prático de como algoritmos como o PCA e o SVD funcionam nos bastidores para atuar como o nosso "espremedor de dados". Esse é o fluxo de trabalho (pipeline) típico aplicado antes de treinar um modelo de inteligência artificial:
 
-**1. Preparação da Régua (Pré-processamento e Padronização)**
+** Preparação da Régua (Pré-processamento e Padronização)**
 Antes de o algoritmo procurar padrões, você precisa garantir que todas as informações estejam na mesma escala de medida.
 *   **O que é feito:** Subtrai-se a média de cada variável (centralização) e divide-se pelo desvio padrão. 
 *   **Por que é vital:** Se você não fizer isso, uma coluna com valores numéricos naturalmente grandes (como "Salário em Reais") vai ofuscar completamente uma coluna com números pequenos (como "Idade"), enganando o algoritmo.
 *   *Nota prática:* Se a sua planilha for gigante e quase vazia (matriz esparsa, cheia de zeros), você pula a etapa de centralizar a média e usa o algoritmo SVD diretamente para não estourar a memória do computador.
 
-**2. Mapeamento dos Padrões (Cálculo de Covariância e Autovetores)**
+** Mapeamento dos Padrões (Cálculo de Covariância e Autovetores)**
 É aqui que o nosso "fotógrafo de dados" começa a procurar o melhor ângulo da informação.
 *   **O que é feito:** O sistema calcula como todas as colunas da sua planilha variam umas em relação às outras. Em seguida, ele usa o motor matemático (como a Decomposição Espectral ou o SVD) para encontrar as direções ocultas de maior variação nos dados.
 *   **O resultado:** Ele gera os chamados **Componentes Principais** (ou autovetores), que são as novas "super-métricas" descorrelacionadas, e os **Autovalores**, que são notas que medem a "força" ou a quantidade de informação que cada componente conseguiu capturar.
 
-**3. O Corte e Seleção (Ranking de Importância)**
+** O Corte e Seleção (Ranking de Importância)**
 Você não vai usar todos os padrões encontrados, caso contrário, não haveria compressão.
 *   **O que é feito:** O algoritmo ordena essas novas super-métricas da mais forte (a que capturou mais variância) para a mais fraca. 
 *   **A Regra de Bolso:** Você define um limite de quanta informação original quer salvar (por exemplo, 95% da essência dos dados). O sistema retém apenas a quantidade de componentes principais no topo do ranking necessária para bater essa meta, descartando o resto como se fosse "lixo" ou ruído.
 
-**4. O Achatamento (Projeção dos Dados)**
+** O Achatamento (Projeção dos Dados)**
 Agora que escolhemos os melhores ângulos, tiramos a foto final.
 *   **O que é feito:** A planilha original (que poderia ter milhares de colunas) é matematicamente projetada e reconstruída usando apenas aqueles poucos componentes fortes que você selecionou no passo anterior.
 *   **O resultado:** Você ganha um banco de dados novo, extremamente leve, compactado e muito mais fácil de ser interpretado.
 
-**5. O Teste Prático (Treinamento do Modelo de Machine Learning)**
+** O Teste Prático (Treinamento do Modelo de Machine Learning)**
 Com o banco de dados comprimido em mãos, você finalmente o entrega para o seu algoritmo de classificação (como uma Regressão Logística).
 *   **Atenção ao *Trade-off*:** Nesse passo, o modelo roda muito mais rápido e fica protegido contra o aluno que "decora" (*overfitting*). No entanto, como você jogou fora uma porcentagem da informação no Passo 3, você deve monitorar se o seu modelo não perdeu precisão ao ficar "cego" para algum micro-detalhe importante que foi descartado.
-
-Gostaria de ver um exemplo em código de como implementar esse exato pipeline usando a biblioteca *Scikit-Learn* no Python?
-
 
 
 ### 2. Glossário Prático
