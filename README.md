@@ -21,7 +21,7 @@ Para montar este material, utilizei uma base que mistura teoria acadêmica com f
 - **A Resposta da IA:** A ferramenta entregou um passo a passo mais voltado para o pipeline de dados. Explicou a obrigatoriedade da padronização prévia, como o PCA agrupa variáveis correlacionadas em "Componentes Principais" e a regra de reter apenas os componentes que explicam cerca de 95% da variância. 
 - **O Resultado (Avaliação e Aprendizado):** Aqui a resposta melhorou muito. A IA focou na engenharia de *features* e me deu um alerta importante: como o PCA é não-supervisionado, ele é "cego" em relação à variável alvo. Isso significa que existe o risco de ele descartar (como se fosse ruído) justamente os detalhes que o meu classificador binário precisaria para separar as classes corretamente. A resposta também deixou um ótimo gancho para estudar o SVD como alternativa para matrizes esparsas.
 
-  ## Miniguia de Estudo
+## Miniguia de Estudo
 
 ### 1. Resumo Estruturado: Pipeline de Redução de Dimensionalidade
 Aqui está o passo a passo prático de como algoritmos como o PCA e o SVD funcionam nos bastidores para atuar como o nosso "espremedor de dados". Esse é o fluxo de trabalho (pipeline) típico aplicado antes de treinar um modelo de inteligência artificial:
